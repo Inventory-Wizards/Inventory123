@@ -12,4 +12,27 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+// GET /item by it's id
+router.get("/:id", async (req, res, next) => {
+  try {
+    const item = await Item.findByPk(req.params.id);
+    if (!item) return res.sendStatus(404)
+    res.send(item);
+  } catch (error) {
+    res.sendStatus(500)
+    next(error);
+  }
+});
+
+// CREATE / items
+router.post('/', async (req, res) => {
+  try {
+    const item = await Item.create(req.body)
+    res.status(201).send(item)
+  } catch (err) {
+    res.sendStatus(500)
+    console.error(err)
+  }
+})
+
 module.exports = router;

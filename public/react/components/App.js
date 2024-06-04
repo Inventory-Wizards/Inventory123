@@ -27,7 +27,31 @@ export const App = () => {
 		<main>	
       <h1>Sauce Store</h1>
 			<h2>All things 🔥</h2>
+  <h1>Add an Item</h1>
+  <form id="addItemForm">
+    <label htmlFor="name">Item Name:</label>
+    <input type="text" id="name" name="name" required="" />
+    <br />
+    <br />
+    <label htmlFor="description">Description:</label>
+    <input type="text" id="description" name="description" required="" />
+    <br />
+    <br />
+	<label htmlFor="category">Category:</label>
+    <input type="text" id="category" name="category" required="" />
+    <br />
+    <br />
+    <label htmlFor="price">Price:</label>
+    <input type="number" id="price" name="price" required="" />
+    <br />
+    <br />
+    <button type="submit" onClick="addItem()">Add Item</button>
+  </form>
+			<br />
 			<SaucesList sauces={sauces} />
+			
 		</main>
 	)
+
+
 }
