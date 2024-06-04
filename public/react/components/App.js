@@ -29,6 +29,10 @@ export const App = () => {
 			<h2>All things 🔥</h2>
   <h1>Add an Item</h1>
   <form id="addItemForm">
+  <label for="image">Image:</label>
+  <input type="file" id="image" name="image" accept="image/*" required />
+  <br />
+  <br />
     <label htmlFor="name">Item Name:</label>
     <input type="text" id="name" name="name" required="" />
     <br />
