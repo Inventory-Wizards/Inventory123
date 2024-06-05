@@ -68,20 +68,23 @@ export const App = () => {
 
 
 	return (
-		<main>	
-      <h1>Inventory App</h1>
-		<ul>
+		<main className='list'>	
+			
+      <h1 className='title'>Inventory App</h1>
+		<ul className="grid-container">
+		
+
 	 			 {items.map(item => (
 				<li key={item.id}>
 					<h2>
 					<button onClick={()=> setCurrentItems(item)}>{item.name}</button>
 					</h2>
-					<img src={item.image} alt="" />
+					<img className = "img" src={item.image} alt="" />
 				</li>
 	  			))}
 	    </ul>
 			
-  <h3>Add an Item</h3>
+  <h3 className='itemform'> Add an Item</h3>
   <form id="addItemForm">
   <label for="image">Image:</label>
   <input type="file" id="image" name="image" accept="image/*" required />
