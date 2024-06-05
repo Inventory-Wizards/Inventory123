@@ -8,6 +8,35 @@ export const App = () => {
 
 	const [items, setItems] = useState([]);
 	const [currentItem, setCurrentItems] = useState(null);
+    const [isFormShowing, setIsFormShowing] = useState(false);
+	const [name, setName] = useState("");
+	const [description, setDescription] = useState("");
+	const [price, setPrice] = useState(0);
+	const [category, setCategory] = useState("");
+	const [image, setImage] = useState("");
+
+	async function addItem(event) {
+		event.preventDefault();
+		const response = await fetch(`${apiURL}/items`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ name, description, price, category, image }),
+		});
+		if (response.ok) {
+			const newItem = await response.json();
+			setItems([...items, newItem]);
+			setName("");
+			setDescription("");
+			setPrice(0);
+			setCategory("");
+			setImage("");
+			setIsFormShowing(false);
+		}
+	}
+
+
 
 	async function deleteItem(id){
 		const response = await fetch(`${apiURL}/items/${id}` , {
@@ -71,8 +100,72 @@ export const App = () => {
 		<main className='list'>	
 			
       <h1 className='title'>Inventory App</h1>
-		<ul className="grid-container">
 		
+		<button onClick={() => setIsFormShowing(!isFormShowing)}>
+					{isFormShowing ? "Hide Form" : "Show Form"}
+				</button>
+				{isFormShowing && (
+					<form onSubmit={addItem}>
+						<p className="huge">
+							<label htmlFor="name">Name</label>
+							<br />
+							<input
+								type="text"
+								name="name"
+								id="name"
+								value={name}
+								onChange={event => setName(event.target.value)}
+							/>
+						</p>
+						<p>
+							<label htmlFor="description">Description</label>
+							<br />
+							<textarea
+								name="description"
+								id="description"
+								value={description}
+								onChange={event => setDescription(event.target.value)}
+							/>
+						</p>
+						<p>
+							<label htmlFor="price">Price</label>
+							<br />
+							<input
+								type="number"
+								name="price"
+								id="price"
+								value={price}
+								onChange={event => setPrice(event.target.value)}
+							/>
+						</p>
+						<p>
+							<label htmlFor="category">Category</label>
+							<br />
+							<input
+								type="text"
+								name="category"
+								id="category"
+								value={category}
+								onChange={event => setCategory(event.target.value)}
+							/>
+						</p>
+						<p>
+							<label htmlFor="image">Image</label>
+							<br />
+							<input
+								type="url"
+								name="image"
+								id="image"
+								value={image}
+								onChange={event => setImage(event.target.value)}
+							/>
+						</p>
+						<p>
+							<button type="submit">Add Item</button>
+						</p>
+					</form>
+				)}
+		<ul className="grid-container">
 
 	 			 {items.map(item => (
 				<li key={item.id}>
@@ -84,33 +177,7 @@ export const App = () => {
 	  			))}
 	    </ul>
 			
-  <h3 className='itemform'> Add an Item</h3>
-  <form id="addItemForm">
-  <label for="image">Image:</label>
-  <input type="file" id="image" name="image" accept="image/*" required />
-  <br />
-  <br />
-    <label htmlFor="name">Item Name:</label>
-    <input type="text" id="name" name="name" required="" />
-    <br />
-    <br />
-    <label htmlFor="description">Description:</label>
-    <input type="text" id="description" name="description" required="" />
-    <br />
-    <br />
-	<label htmlFor="category">Category:</label>
-    <input type="text" id="category" name="category" required="" />
-    <br />
-    <br />
-    <label htmlFor="price">Price:</label>
-    <input type="number" id="price" name="price" required="" />
-    <br />
-    <br />
-    <button type="submit" onClick="addItem()">Add Item</button>
-  </form>
-			<br />
-			{/* <SaucesList sauces={sauces} /> */}
-			
+	
 		</main>
 	)
 
