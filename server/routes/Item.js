@@ -33,16 +33,31 @@ router.get("/:id", async (req, res, next) => {
 
 
 // CREATE / items
-router.post('/', (req, res) => {
-  let items = []
-  const { name, price, description, category, image } = req.body;
-  if (!name || !description || !price || !category || !image) {
-      return res.status(400).send('All fields are required');
-  }
-  const newItem = {name, price, description, category, image  };
-  items.push(newItem);
-  res.status(201).send(newItem);
+// POST /api/items
+router.post("/", async (req, res, next) => {
+	try {
+		const item = await Item.create(req.body);
+		res.status(201).send(item); // 201 Created
+	} catch (error) {
+		next(error);
+	}
 });
+
+//Patch items
+router.patch("/:id", async (req, res, next) => {
+  try{
+    let item = await Item.findByPk(req.params.id);
+    if (item){
+      item = await item.update(req.body);
+      res.send({ item, message: "Item has been updated successfully" });
+    } else{
+      res.status(404).send({ error: "not found"})
+    }
+    } catch (error){
+      next(error)
+    }
+  });
+
 
 // DELETE / item by id
 router.delete("/:id", async (req, res, next) => {
@@ -62,15 +77,5 @@ router.delete("/:id", async (req, res, next) => {
 });
 
 
-
-// router.post('/', async (req, res) => {
-//   try {
-//     const item = await Item.create(req.body)
-//     res.status(201).send(item)
-//   } catch (err) {
-//     res.sendStatus(500)
-//     console.error(err)
-//   }
-// })
 
 module.exports = router;
