@@ -131,6 +131,7 @@ export const App = () => {
             {items.filter(item => item.name.toLowerCase().includes(query.toLowerCase())).map((item) => (
                 <li key={item.id}>
                     <h3 onClick={() => setCurrentItems(item)}>{item.name}</h3>
+					
                     <img onClick={() => setCurrentItems(item)} className="img" src={item.image} alt="" />
                 </li>
             ))}
@@ -172,7 +173,7 @@ export const App = () => {
 								name="price"
 								id="price"
 								value={price}
-								onChange={event => setPrice(event.target.value)}
+								onChange={event => setPrice(event.target.valueAsNumber)}
 							/>
 						</p>
 						<p>
