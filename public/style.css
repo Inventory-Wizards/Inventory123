@@ -44,3 +44,89 @@
   font-size:xx-large
 }
 
+/* Search Bar Styling */
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+  padding: 5px 10px;
+}
+
+.search-input {
+  border: 1px solid #000000; /* Specify border width, style, and color */
+  padding: 10px;
+  border-radius: 25px 0 0 25px;
+  width: 300px;
+  font-size: 16px;
+}
+
+.search-button {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #000000; /* Specify border width, style, and color */
+  padding: 10px 20px;
+  border-radius: 0 25px 25px 0;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.search-button:hover {
+  background-color: #45a049;
+}
+
+.search-input::placeholder {
+  color: #000000;
+  font-style: italic;
+
+
+
+}
+
+#addItemForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+  padding: 5px 10px;
+  margin-top: 20px; /* Add margin for spacing */
+  
+}
+
+.form-input {
+  border: 1px solid #000000; /* Specify border width, style, and color */
+  padding: 10px;
+  border-radius: 25px 0 0 25px;
+  width: 200px; /* Adjust width to match the search input */
+  font-size: 16px;
+}
+
+.form-button {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #000000; /* Specify border width, style, and color */
+  padding: 10px 20px;
+  border-radius: 0 25px 25px 0;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.form-button:hover {
+  background-color: #45a049;
+}
+
+.form-input::placeholder {
+  color: #000000;
+  font-style: italic;
+}
+.show-form-button {
+  color: #000000;
+  border: 1px solid #000000; /* Specify border width, style, and color */
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  display: inline;
+  transition: background-color 0.3s ease-in-out;
+}
+
