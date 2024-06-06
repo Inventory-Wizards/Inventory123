@@ -15,6 +15,34 @@ export const App = () => {
 	const [category, setCategory] = useState("");
 	const [image, setImage] = useState("");
 
+	const [query, setQuery] = useState('');
+	const [filteredItems, setFilteredItems] = useState([]);
+	
+	useEffect(() => {
+		async function fetchItems(){
+			try {
+				const response = await fetch(`${apiURL}/items`);
+				const itemsData = await response.json();
+				setItems(itemsData);
+				setFilteredItems(itemsData); // Initialize filtered items with all items
+			} catch (err) {
+				console.log("Oh no an error! ", err)
+			}
+		}
+
+		fetchItems();
+	}, []);
+
+    useEffect(() => {
+        // Filter items based on the search query
+        const filtered = items.filter((item) =>
+            item.name.toLowerCase().includes(query.toLowerCase())
+        );
+        setFilteredItems(filtered);
+    }, [query, items]);
+	
+	
+
 	async function addItem(event) {
 		event.preventDefault();
 		const response = await fetch(`${apiURL}/items`, {
@@ -63,20 +91,7 @@ export const App = () => {
 		}
 	}
 
-	useEffect(() => {
-		async function fetchItems(){
-			try {
-				const response = await fetch(`${apiURL}/items`);
-				const itemsData = await response.json();
-				
-				setItems(itemsData);
-			} catch (err) {
-				console.log("Oh no an error! ", err)
-			}
-		}
 
-		fetchItems();
-	}, []);
 
 	if (currentItem){
 		return(
@@ -97,9 +112,27 @@ export const App = () => {
 
 
 	return (
-		<main className='list'>	
-			
-      <h1 className='title'>Inventory App</h1>
+		<main className='list'>    
+        <h1 className='title'>Inventory App</h1>
+
+        <label htmlFor='search'>Search</label>
+        <input 
+            type="text" 
+            id='search'
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+        />
+
+        <ul className='grid-container'>
+            {items.filter(item => item.name.toLowerCase().includes(query.toLowerCase())).map((item) => (
+                <li key={item.id}>
+                    <h3 onClick={() => setCurrentItems(item)}>{item.name}</h3>
+                    <img className="img" src={item.image} alt="" />
+                </li>
+            ))}
+        </ul>
+
+
 		
 		<button onClick={() => setIsFormShowing(!isFormShowing)}>
 					{isFormShowing ? "Hide Form" : "Show Form"}
@@ -165,18 +198,8 @@ export const App = () => {
 						</p>
 					</form>
 				)}
-		<ul className="grid-container">
 
-	 			 {items.map(item => (
-				<li key={item.id}>
-					<h2>
-					<button onClick={()=> setCurrentItems(item)}>{item.name}</button>
-					</h2>
-					<img className = "img" src={item.image} alt="" />
-				</li>
-	  			))}
-	    </ul>
-			
+		
 	
 		</main>
 	)
