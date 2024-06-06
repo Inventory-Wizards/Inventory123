@@ -1,6 +1,10 @@
 * {
-  background-color: rgb(236, 234, 234);
+  background-color: gold;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
 }
+
+/* /*background-color:  rgb(177, 177, 177); */
 
 .img {
   width: 100%; /* Full width of the container */
@@ -40,4 +44,16 @@
   height: 100px; /* Specify the height of the container */
   font-size:xx-large
 }
+
+h1 {
+  font-size: large;
+  border: 5px solid black;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  text-align: center;
+}
+
 
