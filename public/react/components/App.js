@@ -127,61 +127,86 @@ export const App = () => {
 				<button className="search-button">Search</button>
 			</div>
 
-			<ul className='grid-container'>
-				{filteredItems.map((item) => (
-					<li key={item.id}>
-						<h3 onClick={() => setCurrentItems(item)}>{item.name}</h3>
-						<img className="img" src={item.image} alt={item.name} />
-					</li>
-				))}
-			</ul>
+        <ul className='grid-container'>
+            {items.filter(item => item.name.toLowerCase().includes(query.toLowerCase())).map((item) => (
+                <li key={item.id}>
+                    <h3 onClick={() => setCurrentItems(item)}>{item.name}</h3>
+                    <img onClick={() => setCurrentItems(item)} className="img" src={item.image} alt="" />
+                </li>
+            ))}
+        </ul>
 
-   {/* Form */}
-   <button className="show-form-button" onClick={() => setIsFormShowing(!isFormShowing)}>
-    {isFormShowing ? "Hide Form" : "Show Form"}
-</button>
 
-            {isFormShowing && (
-                <form id="addItemForm" onSubmit={addItem}>
-                    <input
-                        type="text"
-                        className="form-input"
-                        placeholder="Name"
-                        value={name}
-                        onChange={(event) => setName(event.target.value)}
-                    />
-                    <textarea
-                        className="form-input"
-                        placeholder="Description"
-                        value={description}
-                        onChange={(event) => setDescription(event.target.value)}
-                    />
-                    <input
-                        type="number"
-                        className="form-input"
-                        placeholder="Price"
-                        value={price}
-                        onChange={(event) => setPrice(event.target.value)}
-                    />
-                    <input
-                        type="text"
-                        className="form-input"
-                        placeholder="Category"
-                        value={category}
-                        onChange={(event) => setCategory(event.target.value)}
-                    />
-                    <input
-                        type="url"
-                        className="form-input"
-                        placeholder="Image URL"
-                        value={image}
-                        onChange={(event) => setImage(event.target.value)}
-                    />
-                    <button type="submit" className="form-button">
-                        Add Item
-                    </button>
-                </form>
-            )}
-        </main>
-    );
-};
+		
+		<button onClick={() => setIsFormShowing(!isFormShowing)}>
+					{isFormShowing ? "Hide Form" : "Show Form"}
+				</button>
+				{isFormShowing && (
+					<form onSubmit={addItem}>
+						<p className="huge">
+							<label htmlFor="name">Name</label>
+							<br />
+							<input
+								type="text"
+								name="name"
+								id="name"
+								value={name}
+								onChange={event => setName(event.target.value)}
+							/>
+						</p>
+						<p>
+							<label htmlFor="description">Description</label>
+							<br />
+							<textarea
+								name="description"
+								id="description"
+								value={description}
+								onChange={event => setDescription(event.target.value)}
+							/>
+						</p>
+						<p>
+							<label htmlFor="price">Price</label>
+							<br />
+							<input
+								type="number"
+								name="price"
+								id="price"
+								value={price}
+								onChange={event => setPrice(event.target.value)}
+							/>
+						</p>
+						<p>
+							<label htmlFor="category">Category</label>
+							<br />
+							<input
+								type="text"
+								name="category"
+								id="category"
+								value={category}
+								onChange={event => setCategory(event.target.value)}
+							/>
+						</p>
+						<p>
+							<label htmlFor="image">Image</label>
+							<br />
+							<input
+								type="url"
+								name="image"
+								id="image"
+								value={image}
+								onChange={event => setImage(event.target.value)}
+							/>
+						</p>
+						<p>
+							<button type="submit">Add Item</button>
+						</p>
+					</form>
+				)}
+
+		
+	
+		</main>
+	)
+
+
+}
