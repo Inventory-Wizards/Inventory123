@@ -127,7 +127,7 @@ export const App = () => {
             {items.filter(item => item.name.toLowerCase().includes(query.toLowerCase())).map((item) => (
                 <li key={item.id}>
                     <h3 onClick={() => setCurrentItems(item)}>{item.name}</h3>
-                    <img className="img" src={item.image} alt="" />
+                    <img onClick={() => setCurrentItems(item)} className="img" src={item.image} alt="" />
                 </li>
             ))}
         </ul>
