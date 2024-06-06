@@ -126,8 +126,10 @@ export const App = () => {
         <ul className='grid-container'>
             {items.filter(item => item.name.toLowerCase().includes(query.toLowerCase())).map((item) => (
                 <li key={item.id}>
+
                     <h3 className='item-title' onClick={() => setCurrentItems(item)}>{item.name}</h3>
-                    <img className="img" onClick={() => setCurrentItems(item)} src={item.image} alt="" />
+                    <img className="img" onClick={() => setCurrentItems(item)} src={item.image} alt="" />             
+
                 </li>
             ))}
         </ul>
