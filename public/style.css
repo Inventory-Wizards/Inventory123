@@ -1,6 +1,12 @@
 * {
   background-color: rgb(236, 234, 234);
 }
+/*Removes bullet points from the items*/
+ul {
+  list-style-type: none;
+
+}
+
 
 .img {
   width: 100%; /* Full width of the container */
@@ -8,6 +14,8 @@
   max-width: 400px; /* Optional: Limit the maximum width */
   max-height: 400px; /* Optional: Limit the maximum height */
   transition: transform 0.3s ease-in-out; /* Smooth transition effect */
+  margin-left: auto;
+  margin-right: auto;
 }
 .img:hover {
   transform: scale(1.1); /* Scale the image up by 10% on hover */
@@ -23,25 +31,44 @@
 }
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
-  grid-gap: 10px; /* Adjust spacing between grid items */
+  /* grid-template-columns: repeat(3, 1fr); Three columns with equal width */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px; /* Adjust spacing between grid items */
+  background: transparent;
 }
-#addItemForm {
-  display: flex;
-  justify-content: center;
 
+@media screen and (min-width: 768px) {
+  .grid-container {
+      grid-template-columns: repeat(3, 1fr); /* Maximum of three items visible on larger screens */
+  }
 }
-.itemform {
-  text-align: center; /* Horizontally center the text */
-  line-height: 100px; /* Adjust line-height to match container height for vertical centering */
-  height: 100px; /* Specify the height of the container */
-  font-size:xx-large
+
+
+.grid-container img {
+  width: 100%; /* Ensure images fill their containers */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Crop images to fit while preserving aspect ratio */
+  max-width: 75%; /* Limit maximum width of images */
+  max-height: 75%; /*Limit maximum height of images */
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
 }
+
+
+
+/*Updates font for the page heading*/
 .title{
   text-align: center; /* Horizontally center the text */
   line-height: 100px; /* Adjust line-height to match container height for vertical centering */
   height: 100px; /* Specify the height of the container */
-  font-size:xx-large
+  font-size: 3.5vw; /*Makes the title responsive*/
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
 }
 
 /* Search Bar Styling */
@@ -57,7 +84,7 @@
   border: 1px solid #000000; /* Specify border width, style, and color */
   padding: 10px;
   border-radius: 25px 0 0 25px;
-  width: 300px;
+  width: 15vw;
   font-size: 16px;
 }
 
@@ -78,25 +105,49 @@
 .search-input::placeholder {
   color: #000000;
   font-style: italic;
-
-
-
+}
+/*Updates font for the items heading*/
+.item-title{
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 2.5vw;
+  font-variation-settings:
+    "wdth" 100;
+  display: flex;
+  justify-content: center;
 }
 
 #addItemForm {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   border-radius: 25px;
   padding: 5px 10px;
   margin-top: 20px; /* Add margin for spacing */
-  
+  text-align: center;
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.5vw;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+.itemform {
+  text-align: center; /* Horizontally center the text */
+  line-height: 100px; /* Adjust line-height to match container height for vertical centering */
+  height: 100px; /* Specify the height of the container */
+  font-size:xx-large
 }
 
 .form-input {
   border: 1px solid #000000; /* Specify border width, style, and color */
   padding: 10px;
-  border-radius: 25px 0 0 25px;
+  border-radius: 25px 25px 25px 25px;
   width: 200px; /* Adjust width to match the search input */
   font-size: 16px;
 }
@@ -106,9 +157,16 @@
   color: white;
   border: 1px solid #000000; /* Specify border width, style, and color */
   padding: 10px 20px;
-  border-radius: 0 25px 25px 0;
+  border-radius: 25px 25px 25px 25px;
   cursor: pointer;
   font-size: 16px;
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.5vw;
+  font-variation-settings:
+    "wdth" 100;
 }
 
 .form-button:hover {
@@ -122,10 +180,18 @@
 .show-form-button {
   border: 1px solid #000000; /* Specify border width, style, and color */
   padding: 10px;
-  border-radius: 25px 0 0 25px;
+  border-radius: 25px 25px 25px 25px;
   width: 300px;
   font-size: 16px;
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#form-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 

@@ -1,0 +1,227 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300&display=swap');
+
+/* General Reset - This section resets the default margin, padding, and box-sizing for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling - Sets the default font, background color, text color, and padding for the entire page */
+body {
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 300; /* Use weight 300 for general text */
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
+/* Container Styling - Styles the main container for centering and appearance */
+main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Title Styling - Styles the main title of the app */
+.title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 200; /* Use weight 200 for the title */
+}
+
+/* Search Container - Styles the search bar container */
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Search Input - Styles the search input field */
+.search-input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 300px;
+}
+
+/* Button Styling - Base styles for all buttons */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 300;
+}
+
+/* Search Button - Specific styles for the search button */
+.search-button {
+    background-color: #333;
+    color: #fff;
+    margin-left: 10px;
+}
+
+/* Search Button Hover - Changes the background color of the search button on hover */
+.search-button:hover {
+    background-color: #555;
+}
+
+/* Grid Container - Styles the grid container for the item list */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+/* Grid Item - Styles each item in the grid */
+.grid-container li {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Grid Item Hover - Adds a transform effect on hover */
+.grid-container li:hover {
+    transform: translateY(-10px);
+}
+
+/* Item Title - Styles the title of each item */
+.item-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Item Image - Styles the image of each item */
+.img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Form Button Container - Styles the container for the "Add Item" button */
+#form-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Show Form Button - Styles the button for showing the form */
+.show-form-button {
+    background-color: #28a745;
+    color: #fff;
+}
+
+/* Show Form Button Hover - Changes the background color of the "Add Item" button on hover */
+.show-form-button:hover {
+    background-color: #218838;
+}
+
+/* Add Item Form - Styles the form for adding a new item */
+#addItemForm, form {
+    margin-top: 20px;
+}
+
+/* Form Paragraphs - Styles each paragraph in the form */
+form p {
+    margin-bottom: 15px;
+}
+
+/* Form Labels - Styles the labels in the form */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Form Inputs - Styles the input fields and textarea in the form */
+input[type="text"], input[type="number"], input[type="url"], textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 300;
+}
+
+/* Form Submit Button - Styles the submit button in the form */
+.form-button {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Form Submit Button Hover - Changes the background color of the submit button on hover */
+.form-button:hover {
+    background-color: #0056b3;
+}
+
+/* All Items Button - Specific styles for the "All Items" button */
+.all-items-button {
+    background-color: #333;
+    color: #fff;
+}
+
+/* All Items Button Hover - Changes the background color of the "All Items" button on hover */
+.all-items-button:hover {
+    background-color: #555;
+}
+
+/* Delete Item Button - Specific styles for the "Delete Item" button */
+.delete-item-button {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+/* Delete Item Button Hover - Changes the background color of the "Delete Item" button on hover */
+.delete-item-button:hover {
+    background-color: #c82333;
+}
+
+/* Update Item Button - Specific styles for the "Update Item" button */
+.update-item-button {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Update Item Button Hover - Changes the background color of the "Update Item" button on hover */
+.update-item-button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design - Adjusts the grid layout for smaller screens */
+@media (max-width: 992px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .search-container, .search-input {
+        width: 100%;
+    }
+
+    .search-button {
+        width: auto;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
